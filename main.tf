@@ -21,7 +21,8 @@ module "label" {
   additional_tag_map = {} /* Additional attributes (e.g. 1) */
   label_order        = ["environment", "namespace", "name", "attributes"] /* Default label order */
   tags = {
-    "project" = var.project
+    "project"    = var.project
+    "costcenter" = var.costcentre
   }
 }
 
@@ -38,7 +39,7 @@ module "vnet" {
   # firewallsubnet_name   = var.firewallsubnet_name
   firewall_subnet_prefix = var.firewall_subnet_prefix
   # GatewayRT_name        = var.GatewayRT_name
-  gateway_rt_prefix      = var.gateway_rt_prefix
+  gateway_rt_prefix       = var.gateway_rt_prefix
   gateway_rt_nexthop_type = var.gateway_rt_nexthop_type
   gateway_rt_nexthop_ip   = var.gateway_rt_nexthop_ip
 }
