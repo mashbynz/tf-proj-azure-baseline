@@ -25,19 +25,20 @@ module "label" {
   }
 }
 
+
 module "vnet" {
-  source              = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
-  context             = module.label.context
-  region              = var.region
-  ssvnet_addressspace = var.ssvnet_addressspace
+  source            = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
+  context           = module.label.context
+  region            = var.region
+  vnet_addressspace = var.vnet_addressspace
   # ssvnetddos_name       = var.ssvnetddos_name
   # gatewaynsg_name       = var.gatewaynsg_name
   # gatewaysubnet_name    = var.gatewaysubnet_name
-  gatewaysubnet_prefix = var.gatewaysubnet_prefix
+  gateway_subnet_prefix = var.gateway_subnet_prefix
   # firewallsubnet_name   = var.firewallsubnet_name
-  firewallsubnet_prefix = var.firewallsubnet_prefix
+  firewall_subnet_prefix = var.firewall_subnet_prefix
   # GatewayRT_name        = var.GatewayRT_name
-  GatewayRT_prefix      = var.GatewayRT_prefix
-  GatewayRT_nexthoptype = var.GatewayRT_nexthoptype
-  GatewayRT_nexthopIP   = var.GatewayRT_nexthopIP
+  gateway_rt_prefix      = var.gateway_rt_prefix
+  gateway_rt_nexthop_type = var.gateway_rt_nexthop_type
+  gateway_rt_nexthop_ip   = var.gateway_rt_nexthop_ip
 }
