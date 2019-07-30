@@ -3,7 +3,7 @@ Common: Remote state backend
 *****/
 terraform {
   # The configuration for this backend will be filled in by Terragrunt
-  backend "s3" {}
+  backend "azurerm" {}
   required_version = ">= 0.12"
 }
 
