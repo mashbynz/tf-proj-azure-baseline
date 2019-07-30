@@ -26,7 +26,7 @@ module "label" {
 }
 
 module "vnet" {
-  source              = "git@github.com:mashbynz/tf-mod-azure-vnet?ref=master"
+  source              = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
   context             = module.label.context
   region              = var.region
   ssvnet_addressspace = var.ssvnet_addressspace
