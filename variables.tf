@@ -87,20 +87,7 @@ variable "tags" {
 
 /*****
 VNET Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
-@Matt Ashby To Fill In
 *****/
-
-# variable "rg_name" {
-#   type        = string
-#   description = ""
-#   default     = ""
-# }
-
-# variable "vnet_name" {
-#   type        = string
-#   description = ""
-#   default     = ""
-# }
 
 variable "vnet_addressspace" {
   type        = list(string)
@@ -108,47 +95,17 @@ variable "vnet_addressspace" {
   default     = []
 }
 
-# variable "vnet_ddos_name" {
-#   type        = string
-#   description = ""
-#   default     = ""
-# }
-
-# variable "gateway_nsg_name" {
-#   type        = string
-#   description = ""
-#   default     = ""
-# }
-
-# variable "gateway_subnet_name" {
-#   type        = string
-#   description = ""
-#   default     = ""
-# }
-
 variable "gateway_subnet_prefix" {
   type        = string
   description = ""
   default     = ""
 }
 
-# variable "firewall_subnet_name" {
-#   type        = string
-#   description = ""
-#   default     = ""
-# }
-
 variable "firewall_subnet_prefix" {
   type        = string
   description = ""
   default     = ""
 }
-
-# variable "gateway_rt_name" {
-#   type        = string
-#   description = ""
-#   default     = ""
-# }
 
 variable "gateway_rt_prefix" {
   type        = string
@@ -163,6 +120,18 @@ variable "gateway_rt_nexthop_type" {
 }
 
 variable "gateway_rt_nexthop_ip" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "firewall_allocation_method" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "firewall_sku" {
   type        = string
   description = ""
   default     = ""
