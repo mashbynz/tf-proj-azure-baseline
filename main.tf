@@ -7,6 +7,12 @@ terraform {
   required_version = ">= 0.12"
 }
 
+provider "azurerm" {
+  subscription_id = var.subscription_id
+  tenant_id       = var.tenant_id
+  version         = "1.28.0"
+}
+
 /*****
 Modules: tf-proj-auzre-baseline - "git@github.com:mashbynz/tf-proj-azure-baseline?ref=master"
 *****/
