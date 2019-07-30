@@ -30,11 +30,11 @@ module "vnet" {
   context               = module.label.context
   region                = var.region
   ssvnet_addressspace   = var.ssvnet_addressspace
-  ssvnetddos_name       = var.ssvnetddos_name
-  gatewaynsg_name       = var.gatewaynsg_name
-  gatewaysubnet_name    = var.gatewaysubnet_name
+  # ssvnetddos_name       = var.ssvnetddos_name
+  # gatewaynsg_name       = var.gatewaynsg_name
+  # gatewaysubnet_name    = var.gatewaysubnet_name
   gatewaysubnet_prefix  = var.gatewaysubnet_prefix
-  firewallsubnet_name   = var.firewallsubnet_name
+  # firewallsubnet_name   = var.firewallsubnet_name
   firewallsubnet_prefix = var.firewallsubnet_prefix
   GatewayRT_name        = var.GatewayRT_name
   GatewayRT_prefix      = var.GatewayRT_prefix
