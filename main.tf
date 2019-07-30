@@ -26,17 +26,17 @@ module "label" {
 }
 
 module "vnet" {
-  source                = "git@github.com:mashbynz/tf-mode-azure-vnet?ref=master"
-  context               = module.label.context
-  region                = var.region
-  ssvnet_addressspace   = var.ssvnet_addressspace
+  source              = "git@github.com:mashbynz/tf-mod-azure-vnet?ref=master"
+  context             = module.label.context
+  region              = var.region
+  ssvnet_addressspace = var.ssvnet_addressspace
   # ssvnetddos_name       = var.ssvnetddos_name
   # gatewaynsg_name       = var.gatewaynsg_name
   # gatewaysubnet_name    = var.gatewaysubnet_name
-  gatewaysubnet_prefix  = var.gatewaysubnet_prefix
+  gatewaysubnet_prefix = var.gatewaysubnet_prefix
   # firewallsubnet_name   = var.firewallsubnet_name
   firewallsubnet_prefix = var.firewallsubnet_prefix
-  GatewayRT_name        = var.GatewayRT_name
+  # GatewayRT_name        = var.GatewayRT_name
   GatewayRT_prefix      = var.GatewayRT_prefix
   GatewayRT_nexthoptype = var.GatewayRT_nexthoptype
   GatewayRT_nexthopIP   = var.GatewayRT_nexthopIP
