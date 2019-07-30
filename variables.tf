@@ -67,6 +67,12 @@ variable "project" {
   description = "the internal project name"
 }
 
+variable "class" {
+  type        = string
+  default     = ""
+  description = "the type of resource e.g. 'sharedservices' or 'app1'"
+}
+
 variable "delimiter" {
   type        = string
   default     = "-"
