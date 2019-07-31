@@ -48,7 +48,7 @@ module "vnet" {
 }
 
 
-module "gateway" {
+module "gw" {
   source                     = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
   context                    = module.label.context
   region                     = var.region
