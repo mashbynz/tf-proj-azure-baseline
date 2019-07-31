@@ -142,3 +142,8 @@ variable "firewall_sku" {
   description = ""
   default     = ""
 }
+
+/*****
+GATEWAY Module Variables - https://github.com/mashbynz/tf-mod-azure-gw
+*****/
+
