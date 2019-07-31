@@ -75,7 +75,7 @@ variable "class" {
 
 variable "delimiter" {
   type        = string
-  default     = "-"
+  default     = ""
   description = "Delimiter to be used between `namespace`, `environment`, `stage`, `name` and `attributes`"
 }
 
