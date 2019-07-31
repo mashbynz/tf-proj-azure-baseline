@@ -23,10 +23,9 @@ module "label" {
   environment        = var.environment
   name               = var.name
   attributes         = var.attributes
-  # class              = var.class
-  delimiter          = ""
+  delimiter          = "-"
   additional_tag_map = {} /* Additional attributes (e.g. 1) */
-  label_order        = ["environment", "class", "attributes"] /* Default label order */
+  label_order        = ["environment", "namespace", "name", "attributes"] /* Default label order */
   tags = {
     "project"    = var.project
     "costcenter" = var.costcentre
