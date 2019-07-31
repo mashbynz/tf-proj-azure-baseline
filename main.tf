@@ -45,18 +45,23 @@ module "vnet" {
   gateway_rt_nexthop_ip      = var.gateway_rt_nexthop_ip
   firewall_allocation_method = var.firewall_allocation_method
   firewall_sku               = var.firewall_sku
+  vpngw_allocation_method    = var.vpngw_allocation_method
+  vpngw_type                 = var.vpngw_type
+  vpngw_vpn_type             = var.vpngw_vpn_type
+  vpngw_sku                  = var.vpngw_sku
+  vpngw_private_alloc        = var.vpngw_private_alloc
+  vpngw_client_address       = var.vpngw_client_address
 }
 
 
-module "gw" {
-  source                  = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
-  context                 = module.label.context
-  region                  = var.region
-  vpngw_allocation_method = var.vpngw_allocation_method
-  vpngw_type              = var.vpngw_type
-  vpngw_vpn_type          = var.vpngw_vpn_type
-  vpngw_sku               = var.vpngw_sku
-  vpngw_private_alloc     = var.vpngw_private_alloc
-  vpngw_client_address    = var.vpngw_client_address
-  # resource_group_name     = module.vnet.ss_rg_name
-}
+# module "gw" {
+#   source                  = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
+#   context                 = module.label.context
+#   region                  = var.region
+#   vpngw_allocation_method = var.vpngw_allocation_method
+#   vpngw_type              = var.vpngw_type
+#   vpngw_vpn_type          = var.vpngw_vpn_type
+#   vpngw_sku               = var.vpngw_sku
+#   vpngw_private_alloc     = var.vpngw_private_alloc
+#   vpngw_client_address    = var.vpngw_client_address
+# }
