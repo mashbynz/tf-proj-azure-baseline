@@ -147,3 +147,8 @@ variable "firewall_sku" {
 GATEWAY Module Variables - https://github.com/mashbynz/tf-mod-azure-gw
 *****/
 
+variable "vpngw_allocation_method" {
+  type        = string
+  description = ""
+  default     = ""
+}
