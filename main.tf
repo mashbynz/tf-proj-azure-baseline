@@ -49,7 +49,10 @@ module "vnet" {
 
 
 module "gw" {
-  source  = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
-  context = module.label.context
-  region  = var.region
+  source                  = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
+  context                 = module.label.context
+  region                  = var.region
+  vpngw_allocation_method = var.vpngw_allocation_method
+  
+  # resource_group_name     = module.vnet.ss_rg_name
 }
