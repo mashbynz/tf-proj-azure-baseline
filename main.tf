@@ -46,3 +46,10 @@ module "vnet" {
   firewall_allocation_method = var.firewall_allocation_method
   firewall_sku               = var.firewall_sku
 }
+
+
+module "gateway" {
+  source                     = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
+  context                    = module.label.context
+  region                     = var.region
+}
