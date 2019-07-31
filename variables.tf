@@ -144,7 +144,7 @@ variable "firewall_sku" {
 }
 
 /*****
-GATEWAY Module Variables - https://github.com/mashbynz/tf-mod-azure-gw
+GATEWAY Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
 
 variable "vpngw_allocation_method" {
