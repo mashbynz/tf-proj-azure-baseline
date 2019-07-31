@@ -152,3 +152,33 @@ variable "vpngw_allocation_method" {
   description = ""
   default     = ""
 }
+
+variable "vpngw_type" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "vpngw_vpn_type" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "vpngw_sku" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "vpngw_private_alloc" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "vpngw_client_address" {
+  type        = list(string)
+  description = ""
+  default     = []
+}
