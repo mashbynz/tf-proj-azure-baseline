@@ -17,7 +17,7 @@ provider "azurerm" {
 Modules: tf-proj-auzre-baseline - "git@github.com:mashbynz/tf-proj-azure-baseline?ref=master"
 *****/
 
-module "label" {
+module "sharedserviceslabel" {
   source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.14.1"
   namespace          = var.namespace
   environment        = var.environment
@@ -25,7 +25,7 @@ module "label" {
   attributes         = var.attributes
   delimiter          = ""
   additional_tag_map = {} /* Additional attributes (e.g. 1) */
-  label_order        = ["environment", "name", "attributes"] /* Default label order */
+  label_order        = ["name", "attributes"] /* Default label order */
   tags = {
     "project"    = var.project
     "costcenter" = var.costcentre
@@ -49,7 +49,7 @@ module "paaslabel" {
 
 module "vnet" {
   source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
-  context                    = module.paaslabel.context
+  context                    = module.sharedserviceslabel.context
   region                     = var.region
   vnet_addressspace          = var.vnet_addressspace
   gateway_subnet_prefix      = var.gateway_subnet_prefix
