@@ -51,7 +51,6 @@ module "vnet" {
   source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
   context                    = module.paaslabel.context
   region                     = var.region
-  sharedservices_name        = var.sharedservices_name
   vnet_addressspace          = var.vnet_addressspace
   gateway_subnet_prefix      = var.gateway_subnet_prefix
   firewall_subnet_prefix     = var.firewall_subnet_prefix
