@@ -198,3 +198,8 @@ variable "log_analytics_retention_in_days" {
   description = ""
   default     = 0
 }
+
+variable "log_analytics_sku" {
+  description = ""
+  default     = ""
+}
