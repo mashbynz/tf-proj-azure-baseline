@@ -196,5 +196,5 @@ variable "sharedservices_vnet_id" {
 variable "log_analytics_retention_in_days" {
   type        = number
   description = ""
-  default     = ""
+  default     = 0
 }
