@@ -203,3 +203,15 @@ variable "log_analytics_sku" {
   description = ""
   default     = ""
 }
+
+variable "solution_publisher" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "solution_AzureActivity" {
+  type        = string
+  description = ""
+  default     = ""
+}

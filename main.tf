@@ -73,4 +73,6 @@ module "paas" {
   region                          = var.region
   log_analytics_sku               = var.log_analytics_sku
   log_analytics_retention_in_days = var.log_analytics_retention_in_days
+  solution_publisher              = var.solution_publisher
+  solution_AzureActivity          = var.solution_AzureActivity
 }
