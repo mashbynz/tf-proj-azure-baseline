@@ -69,7 +69,7 @@ module "paaslabel" {
 
 module "paas" {
   source                          = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=master"
-  context                         = module.paaslabel.context
+  context                         = module.sharedserviceslabel.context
   region                          = var.region
   log_analytics_retention_in_days = var.log_analytics_retention_in_days
 }
