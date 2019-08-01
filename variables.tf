@@ -73,7 +73,7 @@ variable "class" {
   description = "the type of resource e.g. 'sharedservices' or 'app1'"
 }
 
-variable "sharedservices_name" {
+variable "analytics_name" {
   type        = string
   default     = ""
   description = "the type of resource e.g. 'sharedservices' or 'app1'"
