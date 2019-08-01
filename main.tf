@@ -37,6 +37,7 @@ module "vnet" {
   source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
   context                    = module.label.context
   region                     = var.region
+  sharedservices_name        = var.sharedservices_name
   vnet_addressspace          = var.vnet_addressspace
   gateway_subnet_prefix      = var.gateway_subnet_prefix
   firewall_subnet_prefix     = var.firewall_subnet_prefix
@@ -52,4 +53,9 @@ module "vnet" {
   vpngw_private_alloc        = var.vpngw_private_alloc
   vpngw_client_address       = var.vpngw_client_address
 }
+
+# module "paas" {
+#   source                 = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=master"
+#   sharedservices_vnet_id = module.vnet.vnet_id
+# }
 

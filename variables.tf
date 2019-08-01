@@ -182,3 +182,13 @@ variable "vpngw_client_address" {
   description = ""
   default     = []
 }
+
+/*****
+PaaS Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
+*****/
+
+variable "sharedservices_vnet_id" {
+  type        = string
+  description = ""
+  default     = ""
+}
