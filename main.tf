@@ -36,7 +36,7 @@ module "paaslabel" {
   source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.14.1"
   namespace          = var.namespace
   environment        = var.environment
-  name               = var.environment + var.analytics_name
+  name               = var.environment & var.analytics_name
   attributes         = var.attributes
   delimiter          = ""
   additional_tag_map = {} /* Additional attributes (e.g. 1) */
