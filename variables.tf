@@ -55,7 +55,7 @@ variable "environment" {
   description = "Environment, e.g. 'prod', 'staging', 'dev', 'pre-prod', 'UAT'"
 }
 
-variable "name" {
+variable "sharedservices_name" {
   type        = string
   default     = ""
   description = "Solution name, e.g. 'app' or 'baseline'"
@@ -65,12 +65,6 @@ variable "project" {
   type        = string
   default     = ""
   description = "the internal project name"
-}
-
-variable "class" {
-  type        = string
-  default     = ""
-  description = "the type of resource e.g. 'sharedservices' or 'app1'"
 }
 
 variable "loganalytics_name" {
