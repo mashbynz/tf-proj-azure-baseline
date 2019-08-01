@@ -73,6 +73,12 @@ variable "class" {
   description = "the type of resource e.g. 'sharedservices' or 'app1'"
 }
 
+variable "sharedservices_name" {
+  type        = string
+  default     = ""
+  description = "the type of resource e.g. 'sharedservices' or 'app1'"
+}
+
 variable "delimiter" {
   type        = string
   default     = ""
