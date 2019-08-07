@@ -269,3 +269,9 @@ variable "solution_AzureActivity" {
   description = ""
   default     = ""
 }
+
+variable "security_center_scope" {
+  type        = string
+  description = ""
+  default     = ""
+}
