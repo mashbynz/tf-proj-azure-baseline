@@ -113,8 +113,8 @@ module "paas" {
   security_center_scope           = var.security_center_scope
 }
 
-module "VPNgateway" {
-  source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
-  context              = module.ae_sharedserviceslabel.context
-  region               = var.primaryregion
-}
+# module "VPNgateway" {
+#   source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
+#   context              = module.ae_sharedserviceslabel.context
+#   region               = var.primaryregion
+# }
