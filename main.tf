@@ -50,7 +50,7 @@ module "paaslabel" {
 # module "vnet" {
 #   source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
 #   context                    = module.sharedserviceslabel.context
-#   region                     = var.region
+#   region                     = var.primaryregion
 #   vnet_addressspace          = var.vnet_addressspace
 #   gateway_subnet_prefix      = var.gateway_subnet_prefix
 #   firewall_subnet_prefix     = var.firewall_subnet_prefix
@@ -70,7 +70,7 @@ module "paaslabel" {
 module "paas" {
   source                          = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=master"
   context                         = module.paaslabel.context
-  region                          = var.region
+  region                          = var.primaryregion
   log_analytics_sku               = var.log_analytics_sku
   log_analytics_retention_in_days = var.log_analytics_retention_in_days
   solution_publisher              = var.solution_publisher
