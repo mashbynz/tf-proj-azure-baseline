@@ -66,11 +66,11 @@ module "ae_vnet" {
   source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
   context                    = module.ae_sharedserviceslabel.context
   region                     = var.primaryregion
-  vnet_addressspace          = var.vnet_addressspace
+  vnet_addressspace          = var.vnet_ae_addressspace
   gateway_subnet_prefix      = var.ae_gateway_subnet_prefix
   firewall_subnet_prefix     = var.ae_firewall_subnet_prefix
   gateway_rt_prefix          = var.ae_gateway_rt_prefix
-  gateway_rt_nexthop_type    = var.ae-gateway_rt_nexthop_type
+  gateway_rt_nexthop_type    = var.ae_gateway_rt_nexthop_type
   gateway_rt_nexthop_ip      = var.ae_gateway_rt_nexthop_ip
   firewall_allocation_method = var.firewall_allocation_method
   firewall_sku               = var.firewall_sku
