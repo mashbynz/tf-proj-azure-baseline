@@ -32,7 +32,6 @@ variable "remote_state_blob" {
   default     = ""
 }
 
-
 variable "remote_state_blob_region" {
   description = "The Azure remote state blob region. Autoloaded from the parent terragrunt.hcl"
   type        = string
