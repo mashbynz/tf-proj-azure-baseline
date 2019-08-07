@@ -61,7 +61,13 @@ variable "environment" {
   description = "Environment, e.g. 'prod', 'staging', 'dev', 'pre-prod', 'UAT'"
 }
 
-variable "sharedservices_name" {
+variable "ae_sharedservices_name" {
+  type        = string
+  default     = ""
+  description = "Solution name, e.g. 'app' or 'baseline'"
+}
+
+variable "ase_sharedservices_name" {
   type        = string
   default     = ""
   description = "Solution name, e.g. 'app' or 'baseline'"
@@ -101,37 +107,73 @@ variable "tags" {
 VNET Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
 
-variable "vnet_addressspace" {
+variable "vnet_ae_addressspace" {
   type        = list(string)
   description = ""
   default     = []
 }
 
-variable "gateway_subnet_prefix" {
+variable "vnet_ase_addressspace" {
+  type        = list(string)
+  description = ""
+  default     = []
+}
+
+variable "ae_gateway_subnet_prefix" {
   type        = string
   description = ""
   default     = ""
 }
 
-variable "firewall_subnet_prefix" {
+variable "ase_gateway_subnet_prefix" {
   type        = string
   description = ""
   default     = ""
 }
 
-variable "gateway_rt_prefix" {
+variable "ae_firewall_subnet_prefix" {
   type        = string
   description = ""
   default     = ""
 }
 
-variable "gateway_rt_nexthop_type" {
+variable "ase_firewall_subnet_prefix" {
   type        = string
   description = ""
   default     = ""
 }
 
-variable "gateway_rt_nexthop_ip" {
+variable "ae_gateway_rt_prefix" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_gateway_rt_prefix" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ae_gateway_rt_nexthop_type" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_gateway_rt_nexthop_type" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ae_gateway_rt_nexthop_ip" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_gateway_rt_nexthop_ip" {
   type        = string
   description = ""
   default     = ""
@@ -183,7 +225,13 @@ variable "vpngw_private_alloc" {
   default     = ""
 }
 
-variable "vpngw_client_address" {
+variable "ae_vpngw_client_address" {
+  type        = list(string)
+  description = ""
+  default     = []
+}
+
+variable "ase_vpngw_client_address" {
   type        = list(string)
   description = ""
   default     = []

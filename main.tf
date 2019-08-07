@@ -17,7 +17,22 @@ provider "azurerm" {
 Modules: tf-proj-auzre-baseline - "git@github.com:mashbynz/tf-proj-azure-baseline?ref=master"
 *****/
 
-module "sharedserviceslabel" {
+module "ae_sharedserviceslabel" {
+  source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.14.1"
+  namespace          = var.namespace
+  environment        = var.environment
+  name               = var.sharedservices_name
+  attributes         = var.attributes
+  delimiter          = ""
+  additional_tag_map = {} /* Additional attributes (e.g. 1) */
+  label_order        = ["name", "attributes"] /* Default label order */
+  tags = {
+    "project"    = var.project
+    "costcenter" = var.costcentre
+  }
+}
+
+module "ase_sharedserviceslabel" {
   source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.14.1"
   namespace          = var.namespace
   environment        = var.environment
@@ -47,16 +62,16 @@ module "paaslabel" {
   }
 }
 
-module "aevnet" {
+module "ae_vnet" {
   source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
-  context                    = module.sharedserviceslabel.context
+  context                    = module.ae_sharedserviceslabel.context
   region                     = var.primaryregion
   vnet_addressspace          = var.vnet_addressspace
-  gateway_subnet_prefix      = var.gateway_subnet_prefix
-  firewall_subnet_prefix     = var.firewall_subnet_prefix
-  gateway_rt_prefix          = var.gateway_rt_prefix
-  gateway_rt_nexthop_type    = var.gateway_rt_nexthop_type
-  gateway_rt_nexthop_ip      = var.gateway_rt_nexthop_ip
+  gateway_subnet_prefix      = var.ae_gateway_subnet_prefix
+  firewall_subnet_prefix     = var.ae_firewall_subnet_prefix
+  gateway_rt_prefix          = var.ae_gateway_rt_prefix
+  gateway_rt_nexthop_type    = var.ae-gateway_rt_nexthop_type
+  gateway_rt_nexthop_ip      = var.ae_gateway_rt_nexthop_ip
   firewall_allocation_method = var.firewall_allocation_method
   firewall_sku               = var.firewall_sku
   vpngw_allocation_method    = var.vpngw_allocation_method
@@ -64,7 +79,27 @@ module "aevnet" {
   vpngw_vpn_type             = var.vpngw_vpn_type
   vpngw_sku                  = var.vpngw_sku
   vpngw_private_alloc        = var.vpngw_private_alloc
-  vpngw_client_address       = var.vpngw_client_address
+  vpngw_client_address       = var.ae_vpngw_client_address
+}
+
+module "ase_vnet" {
+  source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
+  context                    = module.ase_sharedserviceslabel.context
+  region                     = var.secondaryregion
+  vnet_addressspace          = var.vnet_ase_addressspace
+  gateway_subnet_prefix      = var.ase_gateway_subnet_prefix
+  firewall_subnet_prefix     = var.ase_firewall_subnet_prefix
+  gateway_rt_prefix          = var.ase_gateway_rt_prefix
+  gateway_rt_nexthop_type    = var.ase_gateway_rt_nexthop_type
+  gateway_rt_nexthop_ip      = var.ase_gateway_rt_nexthop_ip
+  firewall_allocation_method = var.firewall_allocation_method
+  firewall_sku               = var.firewall_sku
+  vpngw_allocation_method    = var.vpngw_allocation_method
+  vpngw_type                 = var.vpngw_type
+  vpngw_vpn_type             = var.vpngw_vpn_type
+  vpngw_sku                  = var.vpngw_sku
+  vpngw_private_alloc        = var.vpngw_private_alloc
+  vpngw_client_address       = var.ase_vpngw_client_address
 }
 
 module "paas" {
