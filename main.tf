@@ -21,7 +21,7 @@ module "ae_sharedserviceslabel" {
   source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.14.1"
   namespace          = var.namespace
   environment        = var.environment
-  name               = var.sharedservices_name
+  name               = var.ae_sharedservices_name
   attributes         = var.attributes
   delimiter          = ""
   additional_tag_map = {} /* Additional attributes (e.g. 1) */
@@ -36,7 +36,7 @@ module "ase_sharedserviceslabel" {
   source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.14.1"
   namespace          = var.namespace
   environment        = var.environment
-  name               = var.sharedservices_name
+  name               = var.ase_sharedservices_name
   attributes         = var.attributes
   delimiter          = ""
   additional_tag_map = {} /* Additional attributes (e.g. 1) */
