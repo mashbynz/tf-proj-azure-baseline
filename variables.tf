@@ -212,6 +212,12 @@ variable "vpngw_vpn_type" {
   default     = ""
 }
 
+variable "vpngw_sku" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
 variable "vpngw_ip_sku" {
   type        = string
   description = ""
