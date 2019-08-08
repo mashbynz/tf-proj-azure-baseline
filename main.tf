@@ -10,8 +10,6 @@ terraform {
 provider "azurerm" {
   subscription_id = var.subscription_id
   tenant_id       = var.tenant_id
-  # client_id       = "6562407f-c532-49fe-a445-e4e5a1e3e3c9"
-  # client_secret   = var.client_secret
   version         = "1.28"
 }
 

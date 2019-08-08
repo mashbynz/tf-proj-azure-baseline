@@ -38,12 +38,6 @@ variable "remote_state_blob_region" {
   default     = ""
 }
 
-variable "client_secret" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
 /*****
 Label Module Variables - "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.14.1"
 *****/
