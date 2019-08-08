@@ -97,7 +97,7 @@ module "ase_vnet" {
   vpngw_allocation_method    = var.vpngw_allocation_method
   vpngw_type                 = var.vpngw_type
   vpngw_vpn_type             = var.vpngw_vpn_type
-  vpngw_sku                  = var.vpngw_sku
+  vpngw_sku                  = var.vpngw_ip_sku
   vpngw_private_alloc        = var.vpngw_private_alloc
   vpngw_client_address       = var.ase_vpngw_client_address
 }

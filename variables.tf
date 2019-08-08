@@ -212,7 +212,7 @@ variable "vpngw_vpn_type" {
   default     = ""
 }
 
-variable "vpngw_sku" {
+variable "vpngw_ip_sku" {
   type        = string
   description = ""
   default     = ""
