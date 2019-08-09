@@ -125,14 +125,14 @@ module "paas" {
 
 module "subscription_owner" {
   source           = "git::https://github.com/mashbynz/tf-mod-azure-iam.git?ref=master"
-  context          = module.paaslabel.context
+  # context          = module.paaslabel.context
   assignable_scope = var.sub_owner
   ad_group_id      = var.sub_owner_ad_group_id
 }
 
 module "subscription_reader" {
   source           = "git::https://github.com/mashbynz/tf-mod-azure-iam.git?ref=master"
-  context          = module.paaslabel.context
+  # context          = module.paaslabel.context
   assignable_scope = var.sub_reader
   ad_group_id      = var.sub_reader_ad_group_id
 }
