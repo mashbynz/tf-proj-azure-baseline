@@ -123,21 +123,21 @@ module "paas" {
 
 # RBAC role assignment
 
-module "subscription_owner" {
-  source = "git::https://github.com/mashbynz/tf-mod-azure-iam.git?ref=master"
-  # context          = module.paaslabel.context
-  assignable_scope = var.sub_owner
-  role_definition  = var.owner_role_definition
-  ad_group_id      = var.sub_owner_ad_group_id
-}
+# module "subscription_owner" {
+#   source = "git::https://github.com/mashbynz/tf-mod-azure-iam.git?ref=master"
+#   # context          = module.paaslabel.context
+#   assignable_scope = var.sub_owner
+#   role_definition  = var.owner_role_definition
+#   ad_group_id      = var.sub_owner_ad_group_id
+# }
 
-module "subscription_reader" {
-  source = "git::https://github.com/mashbynz/tf-mod-azure-iam.git?ref=master"
-  # context          = module.paaslabel.context
-  assignable_scope = var.sub_reader
-  role_definition  = var.reader_role_definition
-  ad_group_id      = var.sub_reader_ad_group_id
-}
+# module "subscription_reader" {
+#   source = "git::https://github.com/mashbynz/tf-mod-azure-iam.git?ref=master"
+#   # context          = module.paaslabel.context
+#   assignable_scope = var.sub_reader
+#   role_definition  = var.reader_role_definition
+#   ad_group_id      = var.sub_reader_ad_group_id
+# }
 
 module "prodloganalytics1_owner" {
   source = "git::https://github.com/mashbynz/tf-mod-azure-iam.git?ref=master"
