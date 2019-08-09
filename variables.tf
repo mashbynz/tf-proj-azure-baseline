@@ -362,3 +362,75 @@ variable "prodloganalytics1_reader_ad_group_id" {
   description = ""
   default     = ""
 }
+
+variable "prodsharedservices1_owner" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodsharedservices1_owner_ad_group_id" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodsharedservices1_contributor" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodsharedservices1_contributor_ad_group_id" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodsharedservices1_reader" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodsharedservices1_reader_ad_group_id" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodsharedservices2_owner" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodsharedservices2_owner_ad_group_id" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodsharedservices2_contributor" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodsharedservices2_contributor_ad_group_id" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodsharedservices2_reader" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodsharedservices2_reader_ad_group_id" {
+  type        = string
+  description = ""
+  default     = ""
+}
