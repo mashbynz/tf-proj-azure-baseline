@@ -280,3 +280,31 @@ variable "security_center_scope" {
   description = ""
   default     = ""
 }
+
+/*****
+IAM Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
+*****/
+
+variable "sub_owner" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "sub_owner_ad_group_id" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "sub_reader" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "sub_reader_ad_group_id" {
+  type        = string
+  description = ""
+  default     = ""
+}
