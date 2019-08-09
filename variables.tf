@@ -285,6 +285,24 @@ variable "security_center_scope" {
 IAM Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
 
+variable "owner_role_definition" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "contributor_role_definition" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "reader_role_definition" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
 variable "sub_owner" {
   type        = string
   description = ""
@@ -304,6 +322,42 @@ variable "sub_reader" {
 }
 
 variable "sub_reader_ad_group_id" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodloganalytics1_owner" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prologanalytics1_owner_ad_group_id" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodloganalytics1_contributor" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prologanalytics1_contributor_ad_group_id" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodloganalytics1_reader" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "prodloganalytics1_reader_ad_group_id" {
   type        = string
   description = ""
   default     = ""
