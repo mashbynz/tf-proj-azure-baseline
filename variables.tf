@@ -306,6 +306,42 @@ variable "ase_family" {
   default     = ""
 }
 
+variable "ae_peering_type" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_peering_type" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ae_peer_asn" {
+  type        = number
+  description = ""
+  default     = 0
+}
+
+variable "ase_peer_asn" {
+  type        = number
+  description = ""
+  default     = 0
+}
+
+variable "ae_advertised_public_prefixes" {
+  type        = list(string)
+  description = ""
+  default     = []
+}
+
+variable "ase_advertised_public_prefixes" {
+  type        = list(string)
+  description = ""
+  default     = []
+}
+
 /*****
 PaaS Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
