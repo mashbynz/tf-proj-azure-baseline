@@ -330,6 +330,18 @@ variable "ase_peer_asn" {
   default     = 0
 }
 
+variable "ae_vlan_id" {
+  type        = number
+  description = ""
+  default     = 0
+}
+
+variable "ase_vlan_id" {
+  type        = number
+  description = ""
+  default     = 0
+}
+
 variable "ae_advertised_public_prefixes" {
   type        = list(string)
   description = ""
