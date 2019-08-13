@@ -243,6 +243,70 @@ variable "ase_vpngw_client_address" {
 }
 
 /*****
+EXPRESSROUTE Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
+*****/
+
+variable "ae_service_provider_name" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ae_peering_location" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ae_bandwidth_in_mbps" {
+  type        = number
+  description = ""
+  default     = 0
+}
+
+variable "ase_service_provider_name" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_peering_location" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_bandwidth_in_mbps" {
+  type        = number
+  description = ""
+  default     = 0
+}
+
+variable "ae_tier" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_tier" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ae_family" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_family" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+/*****
 PaaS Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
 

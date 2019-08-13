@@ -115,6 +115,32 @@ module "paas" {
   security_center_scope           = var.security_center_scope
 }
 
+module "ae_expressroute" {
+  source                = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
+  context               = module.ae_sharedserviceslabel.context
+  region                = var.primaryregion
+  resource_group_name   = module.ae_vnet.rg_name
+  location              = module.ae_vnet.rg_location
+  service_provider_name = var.ae_service_provider_name
+  peering_location      = var.ae_peering_location
+  bandwidth_in_mbps     = var.ae_bandwidth_in_mbps
+  tier                  = var.ae_tier
+  family                = var.ae_family
+}
+
+module "ase_expressroute" {
+  source                = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
+  context               = module.ae_sharedserviceslabel.context
+  region                = var.primaryregion
+  resource_group_name   = module.ase_vnet.rg_name
+  location              = module.ase_vnet.rg_location
+  service_provider_name = var.ase_service_provider_name
+  peering_location      = var.ase_peering_location
+  bandwidth_in_mbps     = var.ase_bandwidth_in_mbps
+  tier                  = var.ase_tier
+  family                = var.ase_family
+}
+
 # module "VPNgateway" {
 #   source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
 #   context              = module.ae_sharedserviceslabel.context
@@ -141,6 +167,8 @@ module "paas" {
 #   role_definition  = var.reader_role_definition
 #   ad_group_id      = var.sub_reader_ad_group_id
 # }
+###################
+# Already created
 ###################
 
 module "prodloganalytics1_owner" {
