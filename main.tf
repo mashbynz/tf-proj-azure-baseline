@@ -81,7 +81,7 @@ module "ae_vnet" {
   vpngw_ip_sku               = var.vpngw_ip_sku
   vpngw_private_alloc        = var.vpngw_private_alloc
   vpngw_client_address       = var.ae_vpngw_client_address
-  vpn_client_protocol        = var.ae_vpn_client_protocol
+  vpn_client_protocols       = var.ae_vpn_client_protocols
 }
 
 module "ase_vnet" {
@@ -103,7 +103,7 @@ module "ase_vnet" {
   vpngw_ip_sku               = var.vpngw_ip_sku
   vpngw_private_alloc        = var.vpngw_private_alloc
   vpngw_client_address       = var.ase_vpngw_client_address
-  vpn_client_protocol        = var.ase_vpn_client_protocol
+  vpn_client_protocols       = var.ase_vpn_client_protocols
 }
 
 module "paas" {
