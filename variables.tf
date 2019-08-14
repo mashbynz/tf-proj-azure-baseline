@@ -242,6 +242,18 @@ variable "ase_vpngw_client_address" {
   default     = []
 }
 
+variable "ae_vpn_client_protocol" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_vpn_client_protocol" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
 /*****
 EXPRESSROUTE Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
