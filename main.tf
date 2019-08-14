@@ -121,7 +121,7 @@ module "ae_expressroute" {
   region                     = var.primaryregion
   resource_group_name        = module.ae_vnet.rg_name
   location                   = module.ae_vnet.rg_location
-  subnet_id                  = module.ae_vnet.gateway_subnet_id
+  gateway_subnet_id          = module.ae_vnet.gateway_subnet_id
   ergw_allocation_method     = var.ae_ergw_allocation_method
   ergw_ip_sku                = var.ae_ergw_ip_sku
   ergw_type                  = var.ae_ergw_type
@@ -144,7 +144,7 @@ module "ase_expressroute" {
   region                     = var.secondaryregion
   resource_group_name        = module.ase_vnet.rg_name
   location                   = module.ase_vnet.rg_location
-  subnet_id                  = module.ase_vnet.gateway_subnet_id
+  gateway_subnet_id          = module.ase_vnet.gateway_subnet_id
   ergw_allocation_method     = var.ase_ergw_allocation_method
   ergw_ip_sku                = var.ase_ergw_ip_sku
   ergw_type                  = var.ase_ergw_type
