@@ -243,15 +243,15 @@ variable "ase_vpngw_client_address" {
 }
 
 variable "ae_vpn_client_protocols" {
-  type        = string
+  type        = list(string)
   description = ""
-  default     = ""
+  default     = []
 }
 
 variable "ase_vpn_client_protocols" {
-  type        = string
+  type        = list(string)
   description = ""
-  default     = ""
+  default     = []
 }
 
 /*****
