@@ -264,7 +264,7 @@ variable "ae_service_provider_name" {
   default     = ""
 }
 
-variable "ae_peering_location" {
+variable "peering_location" {
   type        = string
   description = ""
   default     = ""
@@ -282,11 +282,11 @@ variable "ase_service_provider_name" {
   default     = ""
 }
 
-variable "ase_peering_location" {
-  type        = string
-  description = ""
-  default     = ""
-}
+# variable "ase_peering_location" {
+#   type        = string
+#   description = ""
+#   default     = ""
+# }
 
 variable "ase_bandwidth_in_mbps" {
   type        = number
@@ -352,6 +352,11 @@ variable "ase_vlan_id" {
   type        = number
   description = ""
   default     = 0
+}
+
+
+variable "name" {
+  
 }
 
 variable "ae_advertised_public_prefixes" {
