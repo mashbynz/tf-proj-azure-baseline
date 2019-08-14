@@ -354,31 +354,61 @@ variable "ase_advertised_public_prefixes" {
   default     = []
 }
 
-variable "ergw_allocation_method" {
+variable "ae_ergw_allocation_method" {
   type        = string
   description = ""
   default     = ""
 }
 
-variable "ergw_ip_sku" {
+variable "ae_ergw_ip_sku" {
   type        = string
   description = ""
   default     = ""
 }
 
-variable "ergw_type" {
+variable "ae_ergw_type" {
   type        = string
   description = ""
   default     = ""
 }
 
-variable "ergw_sku" {
+variable "ae_ergw_sku" {
   type        = string
   description = ""
   default     = ""
 }
 
-variable "ergw_private_alloc" {
+variable "ae_ergw_private_alloc" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_ergw_allocation_method" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_ergw_ip_sku" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_ergw_type" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_ergw_sku" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ase_ergw_private_alloc" {
   type        = string
   description = ""
   default     = ""
