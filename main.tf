@@ -121,6 +121,11 @@ module "ae_expressroute" {
   region                     = var.primaryregion
   resource_group_name        = module.ae_vnet.rg_name
   location                   = module.ae_vnet.rg_location
+  ergw_allocation_method     = var.ae_ergw_allocation_method
+  ergw_ip_sku                = var.ae_ergw_ip_sku
+  ergw_type                  = vvar.ae_ergw_type
+  ergw_sku                   = var.ae_ergw_sku
+  ergw_private_alloc         = var.ae_ergw_private_alloc
   service_provider_name      = var.ae_service_provider_name
   peering_location           = var.ae_peering_location
   bandwidth_in_mbps          = var.ae_bandwidth_in_mbps
@@ -134,10 +139,15 @@ module "ae_expressroute" {
 
 module "ase_expressroute" {
   source                     = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
-  context                    = module.ae_sharedserviceslabel.context
+  context                    = module.ase_sharedserviceslabel.context
   region                     = var.secondaryregion
   resource_group_name        = module.ase_vnet.rg_name
   location                   = module.ase_vnet.rg_location
+  ergw_allocation_method     = var.ase_ergw_allocation_method
+  ergw_ip_sku                = var.ase_ergw_ip_sku
+  ergw_type                  = vvar.ase_ergw_type
+  ergw_sku                   = var.ase_ergw_sku
+  ergw_private_alloc         = var.ase_ergw_private_alloc
   service_provider_name      = var.ase_service_provider_name
   peering_location           = var.ase_peering_location
   bandwidth_in_mbps          = var.ase_bandwidth_in_mbps

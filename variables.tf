@@ -354,6 +354,36 @@ variable "ase_advertised_public_prefixes" {
   default     = []
 }
 
+variable "ergw_allocation_method" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ergw_ip_sku" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ergw_type" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ergw_sku" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
+variable "ergw_private_alloc" {
+  type        = string
+  description = ""
+  default     = ""
+}
+
 /*****
 PaaS Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
