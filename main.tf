@@ -121,9 +121,8 @@ module "ae_expressroute" {
   source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=feature/express_route"
   context              = module.ae_sharedserviceslabel.context
   express_route_config = var.express_route_config
-  resource_group_name  = module.ae_vnet.rg_name
-  location             = module.ae_vnet.rg_location
-  gateway_subnet_id    = module.ae_vnet.gateway_subnet_id
+  resource_group_name  = list(module.ae_vnet.rg_name, module.ase_vnet.rg_name)
+  gateway_subnet_id    = list(module.ae_vnet.gateway_subnet_id, module.ase_vnet.gateway_subnet_id)
 }
 
 # module "ase_expressroute" {
