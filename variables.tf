@@ -759,7 +759,7 @@ EXPRESSROUTE Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 
 variable "express_route_config" {
   type = object({
-    regions                       = map(string)
+    location                      = map(string)
     enabled                       = bool
     primary_peer_address_prefix   = list(string)
     secondary_peer_address_prefix = list(string)
