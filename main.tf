@@ -118,7 +118,7 @@ module "paas" {
 }
 
 module "ae_expressroute" {
-  source               = "\..\tf-"
+  source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=feature/express_route"
   context              = module.ae_sharedserviceslabel.context
   express_route_config = var.express_route_config
   resource_group_name  = module.ae_vnet.rg_name
