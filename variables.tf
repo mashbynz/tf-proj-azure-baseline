@@ -283,27 +283,27 @@ variable "express_route_config" {
     ergw_private_allocation = string
   })
   default = {
-    location                    = {}
-    enabled                     = true
-    primary_peer_address_prefix = []
-    secondary_peer_address_prefix = {
-      ae  = null
-      ase = null
+    location                      = {}
+    enabled                       = true
+    primary_peer_address_prefix   = []
+    secondary_peer_address_prefix = []
+    advertised_public_prefixes = {
+      ae  = []
+      ase = []
     }
-    advertised_public_prefixes = {}
-    peering_location           = {}
-    provider_name              = {}
-    bandwidth_in_mbps          = {}
-    tier                       = null
-    family                     = null
-    peering_type               = null
-    peer_asn                   = null
-    vlan_id                    = null
-    ergw_allocation_method     = null
-    ergw_ip_sku                = null
-    ergw_type                  = null
-    ergw_sku                   = null
-    ergw_private_allocation    = null
+    peering_location        = {}
+    provider_name           = {}
+    bandwidth_in_mbps       = {}
+    tier                    = null
+    family                  = null
+    peering_type            = null
+    peer_asn                = null
+    vlan_id                 = null
+    ergw_allocation_method  = null
+    ergw_ip_sku             = null
+    ergw_type               = null
+    ergw_sku                = null
+    ergw_private_allocation = null
   }
   description = "Default express route configuration"
 }
