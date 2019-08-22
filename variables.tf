@@ -307,8 +307,6 @@ variable "express_route_config" {
   }
   description = "Default express route configuration"
 }
-  description = "Default express route configuration"
-}
 
 
 /*****
