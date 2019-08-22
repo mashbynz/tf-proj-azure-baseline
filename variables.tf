@@ -291,16 +291,16 @@ variable "express_route_config" {
     peering_location              = {}
     provider_name                 = {}
     bandwidth_in_mbps             = {}
-    tier                          = ""
-    family                        = ""
+    tier                          = null
+    family                        = null
     peering_type                  = null
     peer_asn                      = null
     vlan_id                       = null
-    ergw_allocation_method        = ""
-    ergw_ip_sku                   = ""
-    ergw_type                     = ""
-    ergw_sku                      = ""
-    ergw_private_allocation       = ""
+    ergw_allocation_method        = null
+    ergw_ip_sku                   = null
+    ergw_type                     = null
+    ergw_sku                      = null
+    ergw_private_allocation       = null
   }
   description = "Default express route configuration"
 }
