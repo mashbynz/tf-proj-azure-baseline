@@ -258,7 +258,7 @@ variable "ase_vpn_client_protocols" {
 EXPRESSROUTE Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
 
-vvariable "express_route_config" {
+variable "express_route_config" {
   type = object({
     location                      = map(string)
     enabled                       = bool
