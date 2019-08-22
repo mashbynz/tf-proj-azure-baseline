@@ -293,7 +293,7 @@ variable "express_route_config" {
     bandwidth_in_mbps             = {}
     tier                          = ""
     family                        = ""
-    peering_type                  = ""
+    peering_type                  = null
     peer_asn                      = null
     vlan_id                       = null
     ergw_allocation_method        = ""
