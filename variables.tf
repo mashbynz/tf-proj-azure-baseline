@@ -258,7 +258,7 @@ variable "ase_vpn_client_protocols" {
 EXPRESSROUTE Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
 
-variable "express_route_config" {
+vvariable "express_route_config" {
   type = object({
     location                      = map(string)
     enabled                       = bool
@@ -283,6 +283,7 @@ variable "express_route_config" {
     ergw_private_allocation = string
   })
   default = {
+    location                      = {}
     enabled                       = true
     primary_peer_address_prefix   = []
     secondary_peer_address_prefix = []
