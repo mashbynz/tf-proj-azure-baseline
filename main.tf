@@ -74,30 +74,6 @@ module "ae_expressroute" {
   gateway_subnet_id    = module.vnet.gateway_subnet_id
 }
 
-# module "ase_expressroute" {
-#   source  = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
-#   context = module.ase_sharedserviceslabel.context
-
-#   region                     = var.secondaryregion
-#   resource_group_name        = module.ase_vnet.rg_name
-#   location                   = module.ase_vnet.rg_location
-#   gateway_subnet_id          = module.ase_vnet.gateway_subnet_id
-#   ergw_allocation_method     = var.ase_ergw_allocation_method
-#   ergw_ip_sku                = var.ase_ergw_ip_sku
-#   ergw_type                  = var.ase_ergw_type
-#   ergw_sku                   = var.ase_ergw_sku
-#   ergw_private_alloc         = var.ase_ergw_private_alloc
-#   service_provider_name      = var.ase_service_provider_name
-#   peering_location           = lookup(var.peering_location, "ase", "")
-#   bandwidth_in_mbps          = var.ase_bandwidth_in_mbps
-#   tier                       = var.ase_tier
-#   family                     = var.ase_family
-#   peering_type               = var.ase_peering_type
-#   peer_asn                   = var.ase_peer_asn
-#   vlan_id                    = var.ase_vlan_id
-#   advertised_public_prefixes = var.ase_advertised_public_prefixes
-# }
-
 # module "VPNgateway" {
 #   source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
 #   context              = module.ae_sharedserviceslabel.context
