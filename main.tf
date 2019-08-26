@@ -49,7 +49,7 @@ module "paaslabel" {
 
 module "vnet" {
   source     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=feature/express_route"
-  context    = module.ae_sharedserviceslabel.context
+  context    = module.label.context
   enabled    = true
   vpc_config = var.vpc_config
 }
@@ -67,11 +67,11 @@ module "paas" {
 
 module "ae_expressroute" {
   source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=feature/express_route"
-  context              = module.ae_sharedserviceslabel.context
+  context              = module.label.context
   enabled              = true
   express_route_config = var.express_route_config
-  resource_group_name  = list(module.ae_vnet.rg_name, module.ase_vnet.rg_name)
-  gateway_subnet_id    = list(module.ae_vnet.gateway_subnet_id, module.ase_vnet.gateway_subnet_id)
+  resource_group_name  = module.vnet.rg_name
+  gateway_subnet_id    = module.vnet.gateway_subnet_id
 }
 
 # module "ase_expressroute" {

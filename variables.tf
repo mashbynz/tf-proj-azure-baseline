@@ -2,6 +2,7 @@
 Common Variables: Azure provider - Autoloaded from Terragrunt.
 *****/
 
+
 variable "primaryregion" {
   description = "The Azure region (e.g. 'australiaeast'). Autoloaded from region.tfvars."
   type        = string
@@ -60,13 +61,7 @@ variable "environment" {
   description = "Environment, e.g. 'prod', 'staging', 'dev', 'pre-prod', 'UAT'"
 }
 
-variable "ae_sharedservices_name" {
-  type        = string
-  default     = ""
-  description = "Solution name, e.g. 'app' or 'baseline'"
-}
-
-variable "ase_sharedservices_name" {
+variable "name" {
   type        = string
   default     = ""
   description = "Solution name, e.g. 'app' or 'baseline'"
