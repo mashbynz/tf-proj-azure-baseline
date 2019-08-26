@@ -120,9 +120,9 @@ variable "vpc_config" {
     vpngw_private_allocation   = string
     client_address             = map(string)
     vpn_client_protocol        = list(string)
-    # gateway_rt_prefix          = string
-    # gateway_rt_nexthop_type    = string
-    # gateway_rt_nexthop_ip = map(string)
+    gateway_rt_prefix          = string
+    gateway_rt_nexthop_type    = string
+    gateway_rt_nexthop_ip = map(string)
   })
 
   default = {
