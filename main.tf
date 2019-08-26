@@ -57,7 +57,7 @@ module "vnet" {
 module "paas" {
   source                          = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=master"
   context                         = module.paaslabel.context
-  region                          = var.primaryregion
+  region                          = var.express_route_config.primaryregion
   log_analytics_sku               = var.log_analytics_sku
   log_analytics_retention_in_days = var.log_analytics_retention_in_days
   solution_publisher              = var.solution_publisher
@@ -73,13 +73,6 @@ module "ae_expressroute" {
   resource_group_name  = module.vnet.rg_name
   gateway_subnet_id    = module.vnet.gateway_subnet_id
 }
-
-# module "VPNgateway" {
-#   source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
-#   context              = module.ae_sharedserviceslabel.context
-#   region               = var.primaryregion
-# }
-
 # RBAC role assignment
 
 ###################
