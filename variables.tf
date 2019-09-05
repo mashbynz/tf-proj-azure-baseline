@@ -221,6 +221,19 @@ variable "express_route_config" {
 PaaS Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
 
+variable "paas_config" {
+  type = object({
+    location     = map(string)
+    paas_enabled = bool
+  })
+
+  default = {
+    location     = {}
+    vnet_enabled = true
+  }
+  description = "Default PaaS configuration"
+}
+
 variable "sharedservices_vnet_id" {
   type        = string
   description = ""
