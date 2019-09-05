@@ -101,51 +101,57 @@ variable "tags" {
 VNET Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
 
-variable "vpc_config" {
+variable "vnet_config" {
   type = object({
-    location = map(string)
-    enabled  = bool
+    location     = map(string)
+    vnet_enabled = bool
     address_space = object({
       ae  = list(string)
       ase = list(string)
     })
     gateway_prefix             = map(string)
     firewall_prefix            = map(string)
+    rt_prefix                  = map(string)
+    rt_nexthop_type            = map(string)
+    rt_nexthop_ip              = map(string)
     firewall_allocation_method = string
     firewall_sku               = string
-    vpngw_allocation_method    = string
-    vpngw_type                 = string
-    vpngw_sku                  = string
-    vpngw_ip_sku               = string
-    vpngw_private_allocation   = string
-    client_address             = map(string)
-    vpn_client_protocol        = list(string)
-    gateway_rt_prefix          = string
-    gateway_rt_nexthop_type    = string
-    gateway_rt_nexthop_ip = map(string)
+    # vpngw_allocation_method    = string
+    # vpngw_type                 = string
+    # vpngw_sku                  = string
+    # vpngw_ip_sku               = string
+    # vpngw_private_allocation   = string
+    # client_address             = map(string)
+    # vpn_client_protocol        = list(string)
+    # gateway_rt_prefix          = string
+    # gateway_rt_nexthop_type    = string
+    # gateway_rt_nexthop_ip      = map(string)
   })
 
   default = {
-    location = {}
-    enabled  = true
+    location     = {}
+    vnet_enabled = true
     address_space = {
       ae  = []
       ase = []
     }
     gateway_prefix             = {}
     firewall_prefix            = {}
+    rt_prefix                  = {}
+    rt_nexthop_type            = {}
+    rt_nexthop_ip              = {}
     firewall_allocation_method = null
     firewall_sku               = null
-    vpngw_allocation_method    = null
-    vpngw_type                 = null
-    vpngw_sku                  = null
-    vpngw_ip_sku               = null
-    vpngw_private_allocation   = null
-    client_address             = {}
-    vpn_client_protocol        = []
-    gateway_rt_prefix          = null
-    gateway_rt_nexthop_type    = null
-    gateway_rt_nexthop_ip      = {}
+    # vpngw_allocation_method    = null
+    # vpngw_type                 = null
+    # vpngw_sku                  = null
+    # vpngw_ip_sku               = null
+    # vpngw_private_allocation   = null
+    # client_address             = {}
+    # vpn_client_protocol        = []
+    # gateway_rt_prefix          = null
+    # gateway_rt_nexthop_type    = null
+    # gateway_rt_nexthop_ip      = {}
   }
   description = "Default VNET configuration"
 }
