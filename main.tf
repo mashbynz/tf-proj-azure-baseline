@@ -48,10 +48,10 @@ module "paaslabel" {
 }
 
 module "vnet" {
-  source     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=feature/express_route"
-  context    = module.label.context
-  enabled    = true
-  vpc_config = var.vpc_config
+  source      = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=feature/express_route"
+  context     = module.label.context
+  enabled     = var.vnet_config.enabled
+  vnet_config = var.vnet_config
 }
 
 module "paas" {
