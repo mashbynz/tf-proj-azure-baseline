@@ -65,10 +65,10 @@ module "paas" {
   security_center_scope           = var.security_center_scope
 }
 
-module "ae_expressroute" {
+module "expressroute" {
   source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=feature/express_route"
   context              = module.label.context
-  enabled              = true
+  enabled              = false
   express_route_config = var.express_route_config
   resource_group_name  = module.vnet.rg_name
   gateway_subnet_id    = module.vnet.gateway_subnet_id
