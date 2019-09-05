@@ -67,6 +67,12 @@ variable "name" {
   description = "Solution name, e.g. 'app' or 'baseline'"
 }
 
+variable "sharedservices_name" {
+  type        = string
+  default     = ""
+  description = "Solution name, e.g. 'app' or 'baseline'"
+}
+
 variable "project" {
   type        = string
   default     = ""
