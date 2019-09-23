@@ -1,4 +1,4 @@
-/*****
+*****
 Common: Remote state backend
 *****/
 terraform {
@@ -17,26 +17,11 @@ provider "azurerm" {
 Modules: tf-proj-auzre-baseline - "git@github.com:mashbynz/tf-proj-azure-baseline?ref=master"
 *****/
 
-module "ae_sharedserviceslabel" {
+module "label" {
   source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.14.1"
   namespace          = var.namespace
   environment        = var.environment
-  name               = var.ae_sharedservices_name
-  attributes         = var.attributes
-  delimiter          = ""
-  additional_tag_map = {} /* Additional attributes (e.g. 1) */
-  label_order        = ["name", "attributes"] /* Default label order */
-  tags = {
-    "project"    = var.project
-    "costcenter" = var.costcentre
-  }
-}
-
-module "ase_sharedserviceslabel" {
-  source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.14.1"
-  namespace          = var.namespace
-  environment        = var.environment
-  name               = var.ase_sharedservices_name
+  name               = var.name
   attributes         = var.attributes
   delimiter          = ""
   additional_tag_map = {} /* Additional attributes (e.g. 1) */
@@ -62,54 +47,18 @@ module "paaslabel" {
   }
 }
 
-module "ae_vnet" {
-  source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
-  context                    = module.ae_sharedserviceslabel.context
-  region                     = var.primaryregion
-  vnet_addressspace          = var.vnet_ae_addressspace
-  gateway_subnet_prefix      = var.ae_gateway_subnet_prefix
-  firewall_subnet_prefix     = var.ae_firewall_subnet_prefix
-  gateway_rt_prefix          = var.ae_gateway_rt_prefix
-  gateway_rt_nexthop_type    = var.ae_gateway_rt_nexthop_type
-  gateway_rt_nexthop_ip      = var.ae_gateway_rt_nexthop_ip
-  firewall_allocation_method = var.firewall_allocation_method
-  firewall_sku               = var.firewall_sku
-  vpngw_allocation_method    = var.vpngw_allocation_method
-  vpngw_type                 = var.vpngw_type
-  vpngw_vpn_type             = var.vpngw_vpn_type
-  vpngw_sku                  = var.vpngw_sku
-  vpngw_ip_sku               = var.vpngw_ip_sku
-  vpngw_private_alloc        = var.vpngw_private_alloc
-  vpngw_client_address       = var.ae_vpngw_client_address
-  vpn_client_protocols       = var.ae_vpn_client_protocols
-}
-
-module "ase_vnet" {
-  source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
-  context                    = module.ase_sharedserviceslabel.context
-  region                     = var.secondaryregion
-  vnet_addressspace          = var.vnet_ase_addressspace
-  gateway_subnet_prefix      = var.ase_gateway_subnet_prefix
-  firewall_subnet_prefix     = var.ase_firewall_subnet_prefix
-  gateway_rt_prefix          = var.ase_gateway_rt_prefix
-  gateway_rt_nexthop_type    = var.ase_gateway_rt_nexthop_type
-  gateway_rt_nexthop_ip      = var.ase_gateway_rt_nexthop_ip
-  firewall_allocation_method = var.firewall_allocation_method
-  firewall_sku               = var.firewall_sku
-  vpngw_allocation_method    = var.vpngw_allocation_method
-  vpngw_type                 = var.vpngw_type
-  vpngw_vpn_type             = var.vpngw_vpn_type
-  vpngw_sku                  = var.vpngw_sku
-  vpngw_ip_sku               = var.vpngw_ip_sku
-  vpngw_private_alloc        = var.vpngw_private_alloc
-  vpngw_client_address       = var.ase_vpngw_client_address
-  vpn_client_protocols       = var.ase_vpn_client_protocols
+module "vnet" {
+  source              = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=feature/express_route"
+  context             = module.label.context
+  sharedservices_name = var.sharedservices_name
+  vnet_enabled        = var.vnet_config.vnet_enabled
+  vnet_config         = var.vnet_config
 }
 
 module "paas" {
   source                          = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=master"
   context                         = module.paaslabel.context
-  region                          = var.primaryregion
+  region                          = var.paas_config.location.ase
   log_analytics_sku               = var.log_analytics_sku
   log_analytics_retention_in_days = var.log_analytics_retention_in_days
   solution_publisher              = var.solution_publisher
@@ -117,58 +66,14 @@ module "paas" {
   security_center_scope           = var.security_center_scope
 }
 
-module "ae_expressroute" {
-  source                     = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
-  context                    = module.ae_sharedserviceslabel.context
-  region                     = var.primaryregion
-  resource_group_name        = module.ae_vnet.rg_name
-  location                   = module.ae_vnet.rg_location
-  gateway_subnet_id          = module.ae_vnet.gateway_subnet_id
-  ergw_allocation_method     = var.ae_ergw_allocation_method
-  ergw_ip_sku                = var.ae_ergw_ip_sku
-  ergw_type                  = var.ae_ergw_type
-  ergw_sku                   = var.ae_ergw_sku
-  ergw_private_alloc         = var.ae_ergw_private_alloc
-  service_provider_name      = var.ae_service_provider_name
-  peering_location           = var.ae_peering_location
-  bandwidth_in_mbps          = var.ae_bandwidth_in_mbps
-  tier                       = var.ae_tier
-  family                     = var.ae_family
-  peering_type               = var.ae_peering_type
-  peer_asn                   = var.ae_peer_asn
-  vlan_id                    = var.ae_vlan_id
-  advertised_public_prefixes = var.ae_advertised_public_prefixes
+module "expressroute" {
+  source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=feature/express_route"
+  context              = module.label.context
+  enabled              = var.express_route_config.enabled
+  express_route_config = var.express_route_config
+  resource_group_name  = module.vnet.rg_name
+  gateway_subnet_id    = module.vnet.gateway_subnet_id
 }
-
-module "ase_expressroute" {
-  source                     = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
-  context                    = module.ase_sharedserviceslabel.context
-  region                     = var.secondaryregion
-  resource_group_name        = module.ase_vnet.rg_name
-  location                   = module.ase_vnet.rg_location
-  gateway_subnet_id          = module.ase_vnet.gateway_subnet_id
-  ergw_allocation_method     = var.ase_ergw_allocation_method
-  ergw_ip_sku                = var.ase_ergw_ip_sku
-  ergw_type                  = var.ase_ergw_type
-  ergw_sku                   = var.ase_ergw_sku
-  ergw_private_alloc         = var.ase_ergw_private_alloc
-  service_provider_name      = var.ase_service_provider_name
-  peering_location           = var.ase_peering_location
-  bandwidth_in_mbps          = var.ase_bandwidth_in_mbps
-  tier                       = var.ase_tier
-  family                     = var.ase_family
-  peering_type               = var.ase_peering_type
-  peer_asn                   = var.ase_peer_asn
-  vlan_id                    = var.ase_vlan_id
-  advertised_public_prefixes = var.ase_advertised_public_prefixes
-}
-
-# module "VPNgateway" {
-#   source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=master"
-#   context              = module.ae_sharedserviceslabel.context
-#   region               = var.primaryregion
-# }
-
 # RBAC role assignment
 
 ###################
