@@ -26,7 +26,7 @@ Modules: tf-proj-auzre-baseline - "git@github.com:mashbynz/tf-proj-azure-baselin
 *****/
 
 module "vnet" {
-  source       = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=feature/express_route"
+  source       = "github.com/Callumccr/tf-proj-azure-vnet?ref=master"
   context      = module.label.context
   vnet_enabled = var.vnet_config.vnet_enabled
   vnet_config  = var.vnet_config
