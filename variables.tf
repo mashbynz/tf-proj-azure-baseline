@@ -2,6 +2,7 @@
 Common Variables: Azure provider - Autoloaded from Terragrunt.
 *****/
 
+
 variable "primaryregion" {
   description = "The Azure region (e.g. 'australiaeast'). Autoloaded from region.tfvars."
   type        = string
@@ -60,13 +61,13 @@ variable "environment" {
   description = "Environment, e.g. 'prod', 'staging', 'dev', 'pre-prod', 'UAT'"
 }
 
-variable "ae_sharedservices_name" {
+variable "name" {
   type        = string
   default     = ""
   description = "Solution name, e.g. 'app' or 'baseline'"
 }
 
-variable "ase_sharedservices_name" {
+variable "sharedservices_name" {
   type        = string
   default     = ""
   description = "Solution name, e.g. 'app' or 'baseline'"
@@ -106,520 +107,111 @@ variable "tags" {
 VNET Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
 
-variable "vnet_ae_addressspace" {
-  type        = list(string)
-  description = ""
-  default     = []
-}
+variable "vnet_config" {
+  type = object({
+    location     = map(string)
+    vnet_enabled = bool
+    address_space = object({
+      ae  = list(string)
+      ase = list(string)
+    })
+    gateway_prefix             = map(string)
+    firewall_prefix            = map(string)
+    rt_prefix                  = map(string)
+    rt_nexthop_type            = map(string)
+    rt_nexthop_ip              = map(string)
+    firewall_allocation_method = string
+    firewall_sku               = string
+    # vpngw_allocation_method    = string
+    # vpngw_type                 = string
+    # vpngw_sku                  = string
+    # vpngw_ip_sku               = string
+    # vpngw_private_allocation   = string
+    # client_address             = map(string)
+    # vpn_client_protocol        = list(string)
+    # gateway_rt_prefix          = string
+    # gateway_rt_nexthop_type    = string
+    # gateway_rt_nexthop_ip      = map(string)
+  })
 
-variable "vnet_ase_addressspace" {
-  type        = list(string)
-  description = ""
-  default     = []
-}
-
-variable "ae_gateway_subnet_prefix" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_gateway_subnet_prefix" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_firewall_subnet_prefix" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_firewall_subnet_prefix" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_gateway_rt_prefix" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_gateway_rt_prefix" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_gateway_rt_nexthop_type" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_gateway_rt_nexthop_type" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_gateway_rt_nexthop_ip" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_gateway_rt_nexthop_ip" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "firewall_allocation_method" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "firewall_sku" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-/*****
-GATEWAY Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
-*****/
-
-variable "vpngw_allocation_method" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "vpngw_type" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "vpngw_vpn_type" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "vpngw_sku" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "vpngw_ip_sku" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "vpngw_private_alloc" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_vpngw_client_address" {
-  type        = list(string)
-  description = ""
-  default     = []
-}
-
-variable "ase_vpngw_client_address" {
-  type        = list(string)
-  description = ""
-  default     = []
-}
-
-variable "ae_vpn_client_protocols" {
-  type        = list(string)
-  description = ""
-  default     = []
-}
-
-variable "ase_vpn_client_protocols" {
-  type        = list(string)
-  description = ""
-  default     = []
+  default = {
+    location     = {}
+    vnet_enabled = true
+    address_space = {
+      ae  = []
+      ase = []
+    }
+    gateway_prefix             = {}
+    firewall_prefix            = {}
+    rt_prefix                  = {}
+    rt_nexthop_type            = {}
+    rt_nexthop_ip              = {}
+    firewall_allocation_method = null
+    firewall_sku               = null
+    # vpngw_allocation_method    = null
+    # vpngw_type                 = null
+    # vpngw_sku                  = null
+    # vpngw_ip_sku               = null
+    # vpngw_private_allocation   = null
+    # client_address             = {}
+    # vpn_client_protocol        = []
+    # gateway_rt_prefix          = null
+    # gateway_rt_nexthop_type    = null
+    # gateway_rt_nexthop_ip      = {}
+  }
+  description = "Default VNET configuration"
 }
 
 /*****
 EXPRESSROUTE Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
 *****/
 
-variable "ae_service_provider_name" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "peering_location" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_bandwidth_in_mbps" {
-  type        = number
-  description = ""
-  default     = 0
-}
-
-variable "ase_service_provider_name" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-# variable "ase_peering_location" {
-#   type        = string
-#   description = ""
-#   default     = ""
-# }
-
-variable "ase_bandwidth_in_mbps" {
-  type        = number
-  description = ""
-  default     = 0
-}
-
-variable "ae_tier" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_tier" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_family" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_family" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_peering_type" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_peering_type" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_peer_asn" {
-  type        = number
-  description = ""
-  default     = 0
-}
-
-variable "ase_peer_asn" {
-  type        = number
-  description = ""
-  default     = 0
-}
-
-variable "ae_vlan_id" {
-  type        = number
-  description = ""
-  default     = 0
-}
-
-variable "ase_vlan_id" {
-  type        = number
-  description = ""
-  default     = 0
-}
-
-
-variable "name" {
-  
-}
-
-variable "ae_advertised_public_prefixes" {
-  type        = list(string)
-  description = ""
-  default     = []
-}
-
-variable "ase_advertised_public_prefixes" {
-  type        = list(string)
-  description = ""
-  default     = []
-}
-
-variable "ae_ergw_allocation_method" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_ergw_ip_sku" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_ergw_type" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_ergw_sku" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ae_ergw_private_alloc" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_ergw_allocation_method" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_ergw_ip_sku" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_ergw_type" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_ergw_sku" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "ase_ergw_private_alloc" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-/*****
-PaaS Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
-*****/
-
-variable "sharedservices_vnet_id" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "log_analytics_retention_in_days" {
-  type        = number
-  description = ""
-  default     = 0
-}
-
-variable "log_analytics_sku" {
-  description = ""
-  default     = ""
-}
-
-variable "solution_publisher" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "solution_AzureActivity" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "security_center_scope" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-/*****
-IAM Module Variables - https://github.com/mashbynz/tf-mod-azure-vnet
-*****/
-
-variable "owner_role_definition" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "contributor_role_definition" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "reader_role_definition" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "sub_owner" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "sub_owner_ad_group_id" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "sub_reader" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "sub_reader_ad_group_id" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodloganalytics1_owner" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prologanalytics1_owner_ad_group_id" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodloganalytics1_contributor" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prologanalytics1_contributor_ad_group_id" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodloganalytics1_reader" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodloganalytics1_reader_ad_group_id" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodsharedservices1_owner" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodsharedservices1_owner_ad_group_id" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodsharedservices1_contributor" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodsharedservices1_contributor_ad_group_id" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodsharedservices1_reader" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodsharedservices1_reader_ad_group_id" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodsharedservices2_owner" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodsharedservices2_owner_ad_group_id" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodsharedservices2_contributor" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodsharedservices2_contributor_ad_group_id" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodsharedservices2_reader" {
-  type        = string
-  description = ""
-  default     = ""
-}
-
-variable "prodsharedservices2_reader_ad_group_id" {
-  type        = string
-  description = ""
-  default     = ""
+variable "express_route_config" {
+  type = object({
+    location                      = map(string)
+    enabled                       = bool
+    primary_peer_address_prefix   = list(string)
+    secondary_peer_address_prefix = list(string)
+    advertised_public_prefixes = object({
+      ae  = list(string)
+      ase = list(string)
+    })
+    peering_location        = map(string)
+    provider_name           = map(string)
+    bandwidth_in_mbps       = map(string)
+    tier                    = string
+    family                  = string
+    peering_type            = string
+    peer_asn                = number
+    vlan_id                 = number
+    ergw_allocation_method  = string
+    ergw_ip_sku             = string
+    ergw_type               = string
+    ergw_sku                = string
+    ergw_private_allocation = string
+  })
+  default = {
+    location                      = {}
+    enabled                       = true
+    primary_peer_address_prefix   = []
+    secondary_peer_address_prefix = []
+    advertised_public_prefixes = {
+      ae  = []
+      ase = []
+    }
+    peering_location        = {}
+    provider_name           = {}
+    bandwidth_in_mbps       = {}
+    tier                    = null
+    family                  = null
+    peering_type            = null
+    peer_asn                = null
+    vlan_id                 = null
+    ergw_allocation_method  = null
+    ergw_ip_sku             = null
+    ergw_type               = null
+    ergw_sku                = null
+    ergw_private_allocation = null
+  }
+  description = "Default express route configuration"
 }
