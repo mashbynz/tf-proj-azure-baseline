@@ -63,7 +63,7 @@ module "paaslabel" {
 }
 
 module "ae_vnet" {
-  source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
+  source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=feature/nzta"
   context                    = module.ae_sharedserviceslabel.context
   region                     = var.primaryregion
   vnet_addressspace          = var.vnet_ae_addressspace
@@ -84,7 +84,7 @@ module "ae_vnet" {
 }
 
 module "ase_vnet" {
-  source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=master"
+  source                     = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=feature/nzta"
   context                    = module.ase_sharedserviceslabel.context
   region                     = var.secondaryregion
   vnet_addressspace          = var.vnet_ase_addressspace
@@ -105,7 +105,7 @@ module "ase_vnet" {
 }
 
 module "paas" {
-  source                          = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=master"
+  source                          = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=feature/nzta"
   context                         = module.paaslabel.context
   region                          = var.primaryregion
   log_analytics_sku               = var.log_analytics_sku
