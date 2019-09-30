@@ -67,14 +67,15 @@ module "paas" {
   security_center_scope           = var.security_center_scope
 }
 
-module "expressroute" {
-  source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=feature/express_route"
-  context              = module.label.context
-  enabled              = var.express_route_config.enabled
-  express_route_config = var.express_route_config
-  resource_group_name  = module.vnet.rg_name
-  gateway_subnet_id    = module.vnet.gateway_subnet_id
-}
+# module "expressroute" {
+#   source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=feature/express_route"
+#   context              = module.label.context
+#   enabled              = var.express_route_config.enabled
+#   express_route_config = var.express_route_config
+#   resource_group_name  = module.vnet.rg_name
+#   gateway_subnet_id    = module.vnet.gateway_subnet_id
+# }
+
 # RBAC role assignment
 
 ###################
