@@ -47,34 +47,34 @@ module "paaslabel" {
   }
 }
 
-# module "vnet" {
-#   source              = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=feature/express_route"
-#   context             = module.label.context
-#   sharedservices_name = var.sharedservices_name
-#   vnet_enabled        = var.vnet_config.vnet_enabled
-#   vnet_config         = var.vnet_config
-# }
+module "vnet" {
+  source              = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=feature/express_route"
+  context             = module.label.context
+  sharedservices_name = var.sharedservices_name
+  vnet_enabled        = var.vnet_config.vnet_enabled
+  vnet_config         = var.vnet_config
+}
 
-# module "paas" {
-#   source                          = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=feature/express_route"
-#   context                         = module.paaslabel.context
-#   paas_enabled                    = var.paas_config.paas_enabled
-#   # region                          = var.paas_config.location.ase
-#   log_analytics_sku               = var.log_analytics_sku
-#   log_analytics_retention_in_days = var.log_analytics_retention_in_days
-#   solution_publisher              = var.solution_publisher
-#   solution_AzureActivity          = var.solution_AzureActivity
-#   security_center_scope           = var.security_center_scope
-# }
+module "paas" {
+  source                          = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=feature/express_route"
+  context                         = module.paaslabel.context
+  paas_enabled                    = var.paas_config.paas_enabled
+  # region                          = var.paas_config.location.ase
+  log_analytics_sku               = var.log_analytics_sku
+  log_analytics_retention_in_days = var.log_analytics_retention_in_days
+  solution_publisher              = var.solution_publisher
+  solution_AzureActivity          = var.solution_AzureActivity
+  security_center_scope           = var.security_center_scope
+}
 
-# module "expressroute" {
-#   source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=feature/express_route"
-#   context              = module.label.context
-#   enabled              = var.express_route_config.enabled
-#   express_route_config = var.express_route_config
-#   resource_group_name  = module.vnet.rg_name
-#   gateway_subnet_id    = module.vnet.gateway_subnet_id
-# }
+module "expressroute" {
+  source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=feature/express_route"
+  context              = module.label.context
+  enabled              = var.express_route_config.enabled
+  express_route_config = var.express_route_config
+  resource_group_name  = module.vnet.rg_name
+  gateway_subnet_id    = module.vnet.gateway_subnet_id
+}
 
 # RBAC role assignment
 
