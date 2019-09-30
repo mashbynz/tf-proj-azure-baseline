@@ -59,7 +59,7 @@ module "paas" {
   source                          = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=feature/express_route"
   context                         = module.paaslabel.context
   paas_enabled                    = var.paas_config.paas_enabled
-  region                          = var.paas_config.location.ase
+  region                          = var.paas_config.location
   log_analytics_sku               = var.log_analytics_sku
   log_analytics_retention_in_days = var.log_analytics_retention_in_days
   solution_publisher              = var.solution_publisher
