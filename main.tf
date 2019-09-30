@@ -55,16 +55,16 @@ module "vnet" {
   vnet_config         = var.vnet_config
 }
 
-# module "paas" {
-#   source                          = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=master"
-#   context                         = module.paaslabel.context
-#   region                          = var.paas_config.location.ase
-#   log_analytics_sku               = var.log_analytics_sku
-#   log_analytics_retention_in_days = var.log_analytics_retention_in_days
-#   solution_publisher              = var.solution_publisher
-#   solution_AzureActivity          = var.solution_AzureActivity
-#   security_center_scope           = var.security_center_scope
-# }
+module "paas" {
+  source                          = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=feature/express_route"
+  context                         = module.paaslabel.context
+  region                          = var.paas_config.location.ase
+  log_analytics_sku               = var.log_analytics_sku
+  log_analytics_retention_in_days = var.log_analytics_retention_in_days
+  solution_publisher              = var.solution_publisher
+  solution_AzureActivity          = var.solution_AzureActivity
+  security_center_scope           = var.security_center_scope
+}
 
 module "expressroute" {
   source               = "git::https://github.com/mashbynz/tf-mod-azure-gw.git?ref=feature/express_route"
