@@ -47,13 +47,13 @@ module "paaslabel" {
   }
 }
 
-module "vnet" {
-  source              = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=feature/express_route"
-  context             = module.label.context
-  sharedservices_name = var.sharedservices_name
-  vnet_enabled        = var.vnet_config.vnet_enabled
-  vnet_config         = var.vnet_config
-}
+# module "vnet" {
+#   source              = "git::https://github.com/mashbynz/tf-mod-azure-vnet.git?ref=feature/express_route"
+#   context             = module.label.context
+#   sharedservices_name = var.sharedservices_name
+#   vnet_enabled        = var.vnet_config.vnet_enabled
+#   vnet_config         = var.vnet_config
+# }
 
 module "paas" {
   source                          = "git::https://github.com/mashbynz/tf-mod-azure-paas.git?ref=feature/express_route"
