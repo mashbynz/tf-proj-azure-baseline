@@ -18,7 +18,7 @@ Modules: tf-proj-auzre-baseline - "git@github.com:mashbynz/tf-proj-azure-baselin
 *****/
 
 module "ae_sharedserviceslabel" {
-  source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.14.1"
+  source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.15"
   namespace          = var.namespace
   environment        = var.environment
   name               = var.ae_sharedservices_name
@@ -33,7 +33,7 @@ module "ae_sharedserviceslabel" {
 }
 
 module "ase_sharedserviceslabel" {
-  source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.14.1"
+  source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.15"
   namespace          = var.namespace
   environment        = var.environment
   name               = var.ase_sharedservices_name
@@ -48,7 +48,7 @@ module "ase_sharedserviceslabel" {
 }
 
 module "paaslabel" {
-  source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.14.1"
+  source             = "git::https://github.com/cloudposse/terraform-null-label.git?ref=0.15"
   namespace          = var.namespace
   environment        = var.environment
   name               = var.loganalytics_name
